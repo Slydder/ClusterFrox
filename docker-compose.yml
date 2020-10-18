@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8080:80
+
+  php:
+    image: php:latest
+    expose:
+      - 9000
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 4306:3306
+    volumes:
+    - ./docker/mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: db
+      MYSQL_PASSWORD: db
+
+  froxlor_db:
+    image: mysql:5.7
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: froxlor
+      MYSQL_USER: froxlor
+      MYSQL_PASSWORD: froxlor
+
+  froxlor:
+    build: ./docker/froxlor
+    ports:
+      - 8081:80

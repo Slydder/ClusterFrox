@@ -1,0 +1,1 @@
+{"distro":"buster","http":"apache24","dns":"bind","smtp":"postfix_dovecot","mail":"dovecot_postfix2","ftp":"proftpd","system":["cron"]}
